@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RegistrationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/index', function () {
-    return view('dashboard');
+    return view('page.dashboard');
 });
 
 Route::get('/login',function(){
-    return view('login');
+    return view('auth.login');
 });
+
+Route::get('/register',[RegistrationController::class, 'index']);
+Route::post('/register',[RegistrationController::class, 'register']);
